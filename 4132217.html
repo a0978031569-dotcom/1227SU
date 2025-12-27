@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>正修科技大學 校園資訊入口</title>
+
+<style>
+/* =====================
+   基本重置
+===================== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+
+  /* 背景圖片 */
+  background-image: url("https://images.pexels.com/photos/158827/field-corn-air-frisch-158827.jpeg?cs=srgb&dl=pexels-pixabay-158827.jpg&fm=jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* =====================
+   頂部色塊標題
+===================== */
+.header {
+  width: 100%;
+  height: 180px;
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  color: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header h1 {
+  font-size: 40px;
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+/* =====================
+   主畫面容器
+===================== */
+.main-wrapper {
+  width: 90vw;
+  margin: -60px auto 120px;
+}
+
+/* =====================
+   中央主要內容
+===================== */
+.main-content {
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 20px;
+  padding: 80px;
+  min-height: 560px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* =====================
+   卡片排列
+===================== */
+.card-container {
+  display: flex;
+  gap: 40px;
+}
+
+/* =====================
+   翻轉卡片
+===================== */
+.flip-card {
+  perspective: 1000px;
+}
+
+.flip-card input {
+  display: none;
+}
+
+.card {
+  width: 260px;
+  height: 340px;
+  position: relative;
+  cursor: pointer;
+  display: block;
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+}
+
+/* 正反面共用 */
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  border-radius: 16px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  backface-visibility: hidden;
+  transition: transform 0.6s;
+
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+.card-back a {
+  margin-top: 16px;
+  display: inline-block;
+  text-decoration: none;
+  color: #2563eb;
+  font-weight: bold;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+.card-back a:hover {
+  color: #1e40af;
+}
+
+/* 正面 */
+.card-front h3 {
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+
+.card-front p {
+  color: #666;
+}
+
+/* 背面 */
+.card-back {
+  transform: rotateY(180deg);
+  padding: 24px;
+  text-align: center;
+  font-size: 18px;
+}
+
+/* 點擊翻面 */
+.flip-card input:checked + .card .card-front {
+  transform: rotateY(180deg);
+}
+
+.flip-card input:checked + .card .card-back {
+  transform: rotateY(360deg);
+}
+
+/* =====================
+   右側書籤式選單
+===================== */
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: -260px;
+  width: 260px;
+  height: 100vh;
+  background: #ffffff;
+  transition: right 0.4s;
+
+  box-shadow: -8px 0 30px rgba(0,0,0,0.15);
+}
+
+.side-menu:hover {
+  right: 0;
+}
+
+/* 書籤外露標籤 */
+.side-menu::before {
+  content: "選單";
+  position: absolute;
+  left: -50px;
+  top: 140px;
+  width: 50px;
+  height: 120px;
+
+  background: #2563eb;
+  color: #ffffff;
+  writing-mode: vertical-rl;
+  text-align: center;
+  line-height: 120px;
+
+  border-radius: 12px 0 0 12px;
+  cursor: pointer;
+}
+
+/* 選單內容 */
+.side-menu ul {
+  list-style: none;
+  padding: 40px 24px;
+  margin: 0;
+}
+
+.side-menu li {
+  margin-bottom: 20px;
+}
+
+.side-menu a {
+  text-decoration: none;
+  color: #333;
+  font-size: 18px;
+}
+.card-title {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.card-title h2 {
+  font-size: 36px;
+  margin: 0 0 12px;
+  color: #222;
+}
+
+.card-title p {
+  font-size: 18px;
+  color: #666;
+  margin: 0;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 頂部標題 -->
+<div class="header">
+  <h1>正修科技大學 校園資訊入口</h1>
+</div>
+
+<!-- 主內容 -->
+<div class="main-wrapper">
+ <div class="main-content">
+
+ 
+  <div class="card-title">
+    <h2>新生問題?</h2>
+    <p>點擊右方卡片看看有沒有解答吧!</p>
+  </div>
+
+  <div class="card-container">
+  
+
+      <div class="flip-card">
+        <input type="checkbox" id="card1">
+        <label for="card1" class="card">
+          <div class="card-front">
+            <h3>選課</h3>
+            <p>點擊查看</p>
+          </div>
+          <div class="card-back">
+            <p>
+                前往選課系統後進行加退選，記得學分不能低於當學期的最低標
+                學期開始後一周內可以加退選，記得看時間!
+            </p>
+            
+                <a href="https://portal.csu.edu.tw/main.aspx#">試試看?</a>
+          </div>
+        </label>
+      </div>
+
+      <div class="flip-card">
+        <input type="checkbox" id="card2">
+        <label for="card2" class="card">
+          <div class="card-front">
+            <h3>請假</h3>
+            <p>點擊查看</p>
+          </div>
+          <div class="card-back">
+           <p>
+            除事假、生理假、身心調適假外皆需要相關證明，如果超過線上請假時間請換成紙本申請!
+           </p>
+           
+            <a href="https://stutakeleave.csu.edu.tw/Default">試試看?</a>
+          </div>
+        </label>
+      </div>
+
+      <div class="flip-card">
+        <input type="checkbox" id="card3">
+        <label for="card3" class="card">
+          <div class="card-front">
+            <h3>服務學習</h3>
+            <p>點擊查看</p>
+          </div>
+          <div class="card-back">
+            <p>
+                志工服務10小時，社團體驗 6 小時，專業學習 4 小時
+                服務學習只需要完成一學期，如果有少完成就需要重修!
+            </p>
+            <a href="https://servicel.csu.edu.tw/main/announcement.aspx">試試看?</a>
+          </div>
+        </label>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- 右側書籤選單 -->
+<div class="side-menu">
+  <ul>
+    <li><a href="https://fresh.csu.edu.tw/" target="_blank">新生網站</a></li>
+    <li><a href="https://eclass2.csu.edu.tw/" target="_blank">易課</a></li>
+    <li><a href="https://portal.csu.edu.tw/main.aspx" target="_blank">訊息網</a></li>
+    <li><a href="https://event.csu.edu.tw/Front/" target="_blank">校園活動</a></li>
+    <li><a href="https://www.csu.edu.tw" target="_blank">正修官網</a></li>
+  </ul>
+</div>
+
+</body>
+</html>
+
